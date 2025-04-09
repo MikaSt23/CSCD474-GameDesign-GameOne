@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TollsCharacterController : MonoBehaviour
+public class ToolsCharacterController : MonoBehaviour
 {
     CharacterController2D character;
     Rigidbody2D rgd2d;
