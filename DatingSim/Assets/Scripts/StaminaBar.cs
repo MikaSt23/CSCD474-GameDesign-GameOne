@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-     public Slider staminaBar;
+    public Slider staminaBar;
     public Stamina playerStamina;
 
     private void Start()
