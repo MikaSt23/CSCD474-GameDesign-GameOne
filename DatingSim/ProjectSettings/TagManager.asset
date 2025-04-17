@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - FarmUI
+  - DateUI
+  - Date
   layers:
   - Default
   - TransparentFX
@@ -12,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Date
   - 
   - 
   - 
@@ -41,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1704529387
+    locked: 0
+  - name: Date
+    uniqueID: 3183247311
     locked: 0
