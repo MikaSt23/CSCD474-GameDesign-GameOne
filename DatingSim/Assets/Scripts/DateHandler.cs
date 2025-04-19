@@ -8,6 +8,9 @@ using DataTree;
 namespace DateTree{
 public class DateHandler : MonoBehaviour
 {
+	//Checks if you can access the hidden choice.
+	bool isRich = true;
+	
 	//conversation state tracker/prev child node variable
 	byte[] prevChildren;
 	
@@ -62,7 +65,7 @@ public class DateHandler : MonoBehaviour
 		carrot.SetActive(false);
 		df.SetActive(false);
 		
-        speaker.text = "Anon-Kun";
+        speaker.text = "Anon-Kun(you)";
 		dialogueBox.text = "Ahh, my date is already here!";
 		choice_1Text.text = "";
 		choice_2Text.text = "";
@@ -78,19 +81,21 @@ public class DateHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(code == 3){Application.Quit();}
-		if(Input.GetKeyDown(KeyCode.Space) | this.currChoice != 0){ RunGame(this.action); }
+		if(Input.GetKeyDown(KeyCode.Space) | this.currChoice != 0){ 
+			RunGame(this.action); 
+		}
 		
     }
 	
-	private TreeNode[] talkToGM(byte index)
+	private TreeNode[] talkToGM(byte index)//our method for grabbing nodes
 	{
 		return this.tree.getNode(index);
 	}
 	
+	//updates the dialogue and choice boxes after a 'space'
 	private void RunGame(TreeNode[] action)
 	{
-		//clear all text and choice buttons
+		//clear all text and choice buttons, read dialogue and clear the actions.
 		if(action[1] != null)
 		{
 			ClearChoices();
@@ -99,6 +104,15 @@ public class DateHandler : MonoBehaviour
 			this.action = new TreeNode[2];
 			this.currChoice = 0;
 		}else{
+			//enable choices and select the appropriate treeNode
+			if(this.action[0] != null)
+			{
+				if(this.action[0].GetFlag() == 3)
+				{
+					//print("Now we in the end-game!");
+					EndGame(this.action);
+				}
+			}
 			EnableChoices((byte)(this.prevChildren.Length), prevChildren);
 		}
 		
@@ -106,6 +120,15 @@ public class DateHandler : MonoBehaviour
 		
 	}
 	
+	//once we've reached an end game state
+	private void EndGame(TreeNode[] action)
+	{
+		ClearChoices();
+		Application.Quit();
+		UnityEditor.EditorApplication.isPlaying = false;
+	}
+	
+	//Our on-click function
 	public void CheckChoice(int choiceNum)
 	{
 		this.currChoice = choiceNum;
@@ -116,6 +139,7 @@ public class DateHandler : MonoBehaviour
 		this.prevChildren = this.action[0].GetChildren();
 	}
 	
+	//clears the choice buttons
 	private void ClearChoices()
 	{
 		choice_1.SetActive(false);
@@ -130,11 +154,24 @@ public class DateHandler : MonoBehaviour
 		dialogueBox.text = "";
 	}
 	
+	//reads the dialogue response to our choice
 	private TreeNode ReadDialogue(TreeNode[] nodes)
 	{
 		TreeNode node1 = nodes[0];
 		TreeNode node2 = nodes[1];
 		
+		if(node1.GetId() == 31)
+		{
+			if(isRich)
+			{
+				this.code = node2.GetFlag();
+				return node2;
+			}
+			else{
+				this.code = node1.GetFlag();
+				return node1;
+			}
+		}
 		if(person){
 			this.code = node1.GetFlag();
 			return node1;
@@ -145,21 +182,26 @@ public class DateHandler : MonoBehaviour
 				
 	}
 	
+	//updates the UI so the player can see the NPC's reaction.
 	private void UpdateDialogue(TreeNode dialogue)
 	{
 		this.dialogueBox.text = dialogue.GetText();
-		if(this.person && this.code != 0)
+		if(this.person && this.code != 0 && this.code != 3)
 		{
 			this.speaker.text = "Carrot";
-		}else if(this.code != 0){
+		}else if(this.code != 0 && this.code != 3){
 			this.speaker.text = "Dragon Fruit";
+		}else if(this.code != 3){
+			this.speaker.text = "Anon-Kun(you)";
 		}else{
-			this.speaker.text = "Anon-Kun";
+			this.speaker.text = "Narrator";
 		}
 		this.prevChildren = dialogue.GetChildren();
 		
 	}
 	
+	
+	//re-enables choices for the player
 	private void EnableChoices(byte numChoices, byte[] children)
 	{
 		//foreach(byte child in children){print(child);}
