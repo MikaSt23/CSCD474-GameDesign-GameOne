@@ -12,8 +12,8 @@ public class DayTimeController : MonoBehaviour
     [SerializeField] AnimationCurve nightTimeCurve;
     [SerializeField] Color dayLightColor = Color.white;
 
-    float time;
-    [SerializeField] float timeScale = 60f;
+    float time = 0f; // Start time at 0
+    [SerializeField] float timeScale = 96f; // Full day (86400s) in 15 minutes (900s)
 
     [SerializeField] Text text;
     [SerializeField] Light2D globalLight;
@@ -27,19 +27,27 @@ public class DayTimeController : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime * timeScale;
-        text.text = Hours.ToString();
-        float v = nightTimeCurve.Evaluate(Hours);
+
+        // Add 4 hours to the displayed time
+        float displayHours = (Hours + 4f) % 24f;
+
+        int hours = Mathf.FloorToInt(displayHours);
+        int minutes = Mathf.FloorToInt((displayHours - hours) * 60);
+        text.text = string.Format("{0:00}:{1:00}", hours, minutes);
+
+        float v = nightTimeCurve.Evaluate(Hours); // Keep light logic based on real hours
         Color c = Color.Lerp(dayLightColor, nightLightColor, v);
         globalLight.color = c;
-        if(time > secondsInDay)
+
+        if (time > secondsInDay)
         {
             NextDay();
         }
     }
+
     private void NextDay()
     {
-        time = 0;
+        time = 0f; // Reset time properly to 0
         days += 1;
     }
 }
-
