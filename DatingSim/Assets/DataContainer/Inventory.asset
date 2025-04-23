@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   slots:
-  - item: {fileID: 11400000, guid: 138d422ef65f9f84b84280ec20b9f6dc, type: 2}
-    count: 100
-  - item: {fileID: 11400000, guid: f1e034550cd0e534a82c2e1ff49b72b0, type: 2}
+  - item: {fileID: 0}
     count: 0
-  - item: {fileID: 11400000, guid: 52527803474f12e4bbba740c0f146394, type: 2}
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
     count: 0
   - item: {fileID: 0}
     count: 0
