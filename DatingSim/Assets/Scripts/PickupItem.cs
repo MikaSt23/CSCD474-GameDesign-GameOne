@@ -9,6 +9,10 @@ public class PickupItem : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float pickupDistance = 1.5f;
 
+    public Item item;
+    public int count = 1;
+
+
     private void Awake ()
     {
         player = GameManager.instance.player.transform;
@@ -25,7 +29,17 @@ public class PickupItem : MonoBehaviour
             speed * Time.deltaTime
             );
 
-        if (distance < 0.1f) Destroy(gameObject);
+        if (distance < 0.1f) {
+            //TODO Should be moved into specified controller rather than being checked here
+            if (GameManager.instance.inventoryContainer != null)
+            {
+                GameManager.instance.inventoryContainer.Add(item, count);
+            } else
+            {
+                Debug.LogWarning("no inventory container attached to the game manager");
+            }
+            Destroy(gameObject); 
+        }
 
 
 

@@ -46,7 +46,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 149b56b02e60bce448f7cf8362dcdad3, type: 3}
     - {fileID: 2800000, guid: fd51cd27af8e260468081f755d0ac064, type: 3}
     - {fileID: 2800000, guid: 4811d1a1fddd1c74396cdc969efaffa0, type: 3}
-    totalSpriteSurfaceArea: 68096
+    totalSpriteSurfaceArea: 71707
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -203,6 +203,9 @@ SpriteAtlas:
   - {fileID: -3316685018015193825, guid: 149b56b02e60bce448f7cf8362dcdad3, type: 3}
   - {fileID: -7940072066423926139, guid: 149b56b02e60bce448f7cf8362dcdad3, type: 3}
   - {fileID: -1673732733077124514, guid: 4811d1a1fddd1c74396cdc969efaffa0, type: 3}
+  - {fileID: 2249915519335348110, guid: 4811d1a1fddd1c74396cdc969efaffa0, type: 3}
+  - {fileID: 384058854656272681, guid: 4811d1a1fddd1c74396cdc969efaffa0, type: 3}
+  - {fileID: 5223556475179290604, guid: 4811d1a1fddd1c74396cdc969efaffa0, type: 3}
   - {fileID: 3611188691014843535, guid: 4811d1a1fddd1c74396cdc969efaffa0, type: 3}
   - {fileID: -6116649514196029273, guid: fd51cd27af8e260468081f755d0ac064, type: 3}
   - {fileID: 3946024663558668164, guid: fd51cd27af8e260468081f755d0ac064, type: 3}
@@ -472,6 +475,9 @@ SpriteAtlas:
   - summer and spring items_5
   - summer and spring items_4
   - trees_0
+  - stone
+  - stone_2
+  - stone_1
   - trees_1
   - spring tilemap_21
   - spring tilemap_19

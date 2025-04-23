@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   pickupDistance: 1.5
+  item: {fileID: 0}
+  count: 1
 --- !u!114 &2242478716757628729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +114,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   pickupDistance: 1.5
+  item: {fileID: 11400000, guid: 52527803474f12e4bbba740c0f146394, type: 2}
+  count: 1
