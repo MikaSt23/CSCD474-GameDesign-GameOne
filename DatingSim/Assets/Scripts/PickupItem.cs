@@ -40,10 +40,6 @@ public class PickupItem : MonoBehaviour
             }
             Destroy(gameObject); 
         }
-
-
-
-
     }
 
 }
