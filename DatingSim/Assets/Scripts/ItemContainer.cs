@@ -17,6 +17,11 @@ public class ItemContainer : ScriptableObject
 
     public void Add(Item item, int count = 1)
     {
+        if (slots == null)
+        {
+            Debug.LogWarning("ItemContainer: slots list is not initialized!");
+            return;
+        }
         if (item.stackable == true)
         {
             ItemSlot itemSlot = slots.Find(x => x.item == item);
@@ -45,4 +50,16 @@ public class ItemContainer : ScriptableObject
             }
         }
     }
+
+    public void Initialize(int slotCount)
+    {
+        if (slots == null)
+            slots = new List<ItemSlot>();
+
+        while (slots.Count < slotCount)
+        {
+            slots.Add(new ItemSlot());
+        }
+    }
+
 }

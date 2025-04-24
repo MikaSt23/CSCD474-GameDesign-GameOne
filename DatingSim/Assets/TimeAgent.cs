@@ -22,3 +22,21 @@ public class TimeAgent : MonoBehaviour
         GameManager.instance.timeController.Unsubscribe(this);
     }
 }
+
+public class ItemSpawnManager : MonoBehaviour
+{
+    public static ItemSpawnManager instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
+    public void SpawnItem(Vector3 position, ItemSpawner prefab, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Instantiate(prefab, position, Quaternion.identity);
+        }
+    }
+}

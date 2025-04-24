@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b80d722f5e4beb4b8941ad815434cae, type: 3}
-  m_Name: Stone
+  m_Name: Grass
   m_EditorClassIdentifier: 
-  Name: Stone
+  Name: Grass
   stackable: 1
-  icon: {fileID: -2182124076254010665, guid: 35ebff2374a96df4697ab1bc066a6f26, type: 3}
+  icon: {fileID: 7932798033344189819, guid: b41c956de49246b44bbac657439d03eb, type: 3}
