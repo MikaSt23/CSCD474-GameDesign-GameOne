@@ -84,4 +84,3 @@ public class DayTimeController : MonoBehaviour
         return time;
     }
 }
-s

@@ -15,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Date
-  - greenery
+  - 
   - 
   - 
   - 
@@ -49,7 +49,4 @@ TagManager:
     locked: 0
   - name: Date
     uniqueID: 3183247311
-    locked: 0
-  - name: green
-    uniqueID: 2895036527
     locked: 0
