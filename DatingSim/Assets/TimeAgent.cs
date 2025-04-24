@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public class TimeAgent : MonoBehaviour
 {
+    public float interval = 1f;           // Hours between ticks
+    private float lastTickHour = -1f;
+
     public Action onTimeTick;
 
     private void Start()
@@ -12,31 +13,17 @@ public class TimeAgent : MonoBehaviour
         GameManager.instance.timeController.Subscribe(this);
     }
 
-    public void Invoke()
+    public void Tick(float currentHour)
     {
-        onTimeTick?.Invoke();
+        if (lastTickHour < 0f || currentHour - lastTickHour >= interval)
+        {
+            onTimeTick?.Invoke();
+            lastTickHour = currentHour;
+        }
     }
 
-    private void onDestroy()
+    private void OnDestroy()
     {
         GameManager.instance.timeController.Unsubscribe(this);
-    }
-}
-
-public class ItemSpawnManager : MonoBehaviour
-{
-    public static ItemSpawnManager instance;
-
-    void Awake()
-    {
-        instance = this;
-    }
-
-    public void SpawnItem(Vector3 position, ItemSpawner prefab, int count)
-    {
-        for (int i = 0; i < count; i++)
-        {
-            Instantiate(prefab, position, Quaternion.identity);
-        }
     }
 }
