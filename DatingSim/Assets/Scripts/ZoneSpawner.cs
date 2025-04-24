@@ -1,46 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class ZoneSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] prefabs; // Tree, bush, rock, etc.
+    [SerializeField] GameObject[] prefabs;
     [SerializeField] int spawnCount = 10;
-
-
+    [SerializeField] Vector2 areaMin = new Vector2(-10, -10);
+    [SerializeField] Vector2 areaMax = new Vector2(10, 10);
     [SerializeField] bool spawnOnStart = true;
-    [SerializeField] GameObject[] trees;
-    [SerializeField] GameObject[] rocks;
-    [SerializeField] GameObject[] bushes;
 
-    [SerializeField] Vector2 areaMin;
-    [SerializeField] Vector2 areaMax;
+    [SerializeField] Tilemap pathTilemap; // Assign this in the inspector
 
-    [SerializeField] int treeCount = 10;
-    [SerializeField] int rockCount = 8;
-    [SerializeField] int bushCount = 20;
-
-    private List<GameObject> spawnedBushes = new List<GameObject>();
-    private List<GameObject> spawnedTrees = new List<GameObject>();
-    private List<GameObject> spawnedRocks = new List<GameObject>();
-
-
-     private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
-        // Draw a wireframe rectangle to represent the spawn zone
-        Gizmos.color = Color.green;  // Set color of the rectangle (green in this case)
-        Gizmos.DrawLine(new Vector3(areaMin.x, areaMin.y, 0), new Vector3(areaMax.x, areaMin.y, 0));  // Bottom edge
-        Gizmos.DrawLine(new Vector3(areaMin.x, areaMin.y, 0), new Vector3(areaMin.x, areaMax.y, 0));  // Left edge
-        Gizmos.DrawLine(new Vector3(areaMax.x, areaMin.y, 0), new Vector3(areaMax.x, areaMax.y, 0));  // Right edge
-        Gizmos.DrawLine(new Vector3(areaMin.x, areaMax.y, 0), new Vector3(areaMax.x, areaMax.y, 0));  // Top edge
+        Gizmos.color = Color.green;
 
-        // Draw spawn points (you can add this if you want to visualize the spawn locations)
-        Gizmos.color = Color.blue;  // Set color for spawn points (blue)
-        for (int i = 0; i < 5; i++)  // Show a few example spawn points
+        Vector3 bottomLeft = new Vector3(areaMin.x, areaMin.y, 0);
+        Vector3 bottomRight = new Vector3(areaMax.x, areaMin.y, 0);
+        Vector3 topLeft = new Vector3(areaMin.x, areaMax.y, 0);
+        Vector3 topRight = new Vector3(areaMax.x, areaMax.y, 0);
+
+        Gizmos.DrawLine(bottomLeft, bottomRight);
+        Gizmos.DrawLine(bottomRight, topRight);
+        Gizmos.DrawLine(topRight, topLeft);
+        Gizmos.DrawLine(topLeft, bottomLeft);
+
+        // Optional: draw some sample spawn points
+        Gizmos.color = Color.blue;
+        for (int i = 0; i < 10; i++)
         {
             float x = Random.Range(areaMin.x, areaMax.x);
             float y = Random.Range(areaMin.y, areaMax.y);
-            Gizmos.DrawSphere(new Vector3(x, y, 0), 0.1f);  // Draw a small sphere at spawn locations
+            Gizmos.DrawSphere(new Vector3(x, y, 0), 0.2f);
         }
     }
 
@@ -49,71 +40,40 @@ public class ZoneSpawner : MonoBehaviour
     {
         if (spawnOnStart)
         {
-            SpawnAll();  // Spawn trees, rocks, and bushes at the start
+            Spawn();
         }
     }
 
-
     public void Spawn()
     {
-        for (int i = 0; i < spawnCount; i++)
+        int spawned = 0;
+        int maxAttempts = spawnCount * 10;
+        int attempts = 0;
+
+        while (spawned < spawnCount && attempts < maxAttempts)
         {
+            attempts++;
+
+            // Select a random prefab from the prefabs array
             GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
             Vector2 position = new Vector2(
                 Random.Range(areaMin.x, areaMax.x),
                 Random.Range(areaMin.y, areaMax.y)
             );
 
-            Instantiate(prefab, position, Quaternion.identity);
+            Vector3Int cellPosition = pathTilemap.WorldToCell(position);
+
+            // Skip if the position overlaps the path tilemap
+            if (pathTilemap.HasTile(cellPosition))
+                continue;
+
+            // Adjust the position to Vector3, setting the Z component
+            Vector3 spawnPosition = new Vector3(position.x, position.y, 1f);  // Set Z to 1 to avoid overlap with path
+
+            // Instantiate the prefab at the adjusted position
+            Instantiate(prefab, spawnPosition, Quaternion.identity);
+            spawned++;
         }
-    }
-
-    private void Awake()
-    {
-        TimeAgent agent = GetComponent<TimeAgent>();
-        agent.onTimeTick += OnTimeTick;
-    }
-
-    void OnTimeTick()
-    {
-        float hour = (FindObjectOfType<DayTimeController>().GetCurrentTimeInSeconds() / 3600f + 4f) % 24f;
-        if (hour >= 6f && hour < 7f) // spawn between 6 and 7 AM
-        {
-            Spawn();
-        }
-    }
-    public void SpawnAll()
-    {
-        SpawnGroup(trees, treeCount, spawnedTrees);
-        SpawnGroup(rocks, rockCount, spawnedRocks);
-        SpawnGroup(bushes, bushCount, spawnedBushes);
-    }
-
-    void SpawnGroup(GameObject[] prefabs, int count, List<GameObject> list)
-    {
-        foreach (GameObject go in list)
-            Destroy(go);
-        list.Clear();
-
-        for (int i = 0; i < count; i++)
-        {
-            Vector2 pos = new Vector2(
-                Random.Range(areaMin.x, areaMax.x),
-                Random.Range(areaMin.y, areaMax.y)
-            );
-
-            GameObject prefab = prefabs[Random.Range(0, prefabs.Length)];
-            GameObject obj = Instantiate(prefab, pos, Quaternion.identity);
-            list.Add(obj);
-        }
-    }
-
-    public void ResetEnvironment()
-    {
-        // Remove and respawn trees and rocks only
-        SpawnGroup(trees, treeCount, spawnedTrees);
-        SpawnGroup(rocks, rockCount, spawnedRocks);
-        SpawnGroup(bushes, bushCount, spawnedBushes);
     }
 
 

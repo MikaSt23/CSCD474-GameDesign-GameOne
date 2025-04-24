@@ -41,8 +41,14 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: player
+    uniqueID: 902613211
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: No spawn zone
+    uniqueID: 3904127625
     locked: 0
   - name: UI
     uniqueID: 1704529387
