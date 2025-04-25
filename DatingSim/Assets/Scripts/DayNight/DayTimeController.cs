@@ -14,10 +14,33 @@ public class DayTimeController : MonoBehaviour
 
     float time = 0f; // Start time at 0
     [SerializeField] float timeScale = 96f; // Full day (86400s) in 15 minutes (900s)
+    [SerializeField] float startAtTime = 2f;
 
     [SerializeField] Text text;
     [SerializeField] Light2D globalLight;
     private int days;
+
+    List<TimeAgent> agents;
+
+    private void Awake()
+    {
+        agents = new List<TimeAgent>();
+    }
+    
+    private void Start()
+    {
+        time = startAtTime;
+    }
+
+    public void Subscribe(TimeAgent timeAgent)
+    {
+        agents.Add(timeAgent);
+    }
+
+    public void Unsubscribe(TimeAgent timeAgent)
+    {
+        agents.Remove(timeAgent);
+    }
 
     float Hours
     {
@@ -43,11 +66,21 @@ public class DayTimeController : MonoBehaviour
         {
             NextDay();
         }
+
+        for(int i = 0; i < agents.Count; i++)
+        {
+            agents[i].Invoke();
+        }
     }
 
     private void NextDay()
     {
         time = 0f; // Reset time properly to 0
         days += 1;
+    }
+
+    public float GetCurrentTimeInSeconds()
+    {
+        return time;
     }
 }

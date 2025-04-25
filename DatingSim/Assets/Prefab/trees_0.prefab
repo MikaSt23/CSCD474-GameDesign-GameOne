@@ -122,6 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf29be62ac8b9a341bae9f9b8c6c80c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpDrop: {fileID: 0}
+  pickUpDrop: {fileID: 1854303109209469229, guid: 70131d555dc3e422db44fd7412fc21a1, type: 3}
   dropCount: 5
   spread: 0.7

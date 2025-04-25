@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 165436330454851481}
   - component: {fileID: 774133062945067464}
-  - component: {fileID: 1033132529855984267}
   - component: {fileID: 2242478716757628729}
   m_Layer: 0
   m_Name: logs
@@ -84,22 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1033132529855984267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854303109209469229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0103209a922466ba11f79b4ea2aa33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  pickupDistance: 1.5
-  item: {fileID: 0}
-  count: 1
 --- !u!114 &2242478716757628729
 MonoBehaviour:
   m_ObjectHideFlags: 0

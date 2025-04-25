@@ -11,12 +11,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Spawner
   - Water
   - UI
   - Date
-  - 
-  - 
+  - Foreground
+  - Background
   - 
   - 
   - 
@@ -43,6 +43,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: player
+    uniqueID: 902613211
+    locked: 0
+  - name: No spawn zone
+    uniqueID: 3904127625
     locked: 0
   - name: UI
     uniqueID: 1704529387
