@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Tree;
 using DataTree;
+using UnityEngine.SceneManagement;
 
 namespace DateTree{
 public class DateHandler : MonoBehaviour
 {
 	//Checks if you can access the hidden choice.
-	bool isRich = true;
+	bool isRich = Choice.isRich;
 	
 	//conversation state tracker/prev child node variable
 	byte[] prevChildren;
@@ -21,7 +22,7 @@ public class DateHandler : MonoBehaviour
 	private byte code = 5;
 	
 	//boolean to see whether we are dating carrot or dragon fruit
-	private bool person;
+	private bool person = Choice.GetIsCarrot();
 	
 	//the choice flag we'll use to check what box was clicked
 	public int currChoice;
@@ -46,17 +47,15 @@ public class DateHandler : MonoBehaviour
 	public GameObject carrot;
 	public GameObject df;
 	
+	//music object options
+	public GameObject track1;
+	public GameObject track2;
+	
     // Start is called before the first frame update
     void Start()
     {
 		//random chance for date to be df or carrot
 		int option = Random.Range(0, 100);
-		if(option < 49){
-			person = true;
-		}else{
-			person = false;
-		}
-		
 		
 		//Start of the scene
 		choice_1.SetActive(false);
@@ -64,6 +63,8 @@ public class DateHandler : MonoBehaviour
 		choice_3.SetActive(false);
 		carrot.SetActive(false);
 		df.SetActive(false);
+		track1.SetActive(false);
+		track2.SetActive(false);
 		
         speaker.text = "Anon-Kun(you)";
 		dialogueBox.text = "Ahh, my date is already here!";
@@ -71,7 +72,14 @@ public class DateHandler : MonoBehaviour
 		choice_2Text.text = "";
 		choice_3Text.text = "";
 		
-		if(person){carrot.SetActive(true);}else{df.SetActive(true);}
+		if(person){
+			carrot.SetActive(true);
+			this.track1.SetActive(true);
+		}
+		else{
+			df.SetActive(true);
+			this.track2.SetActive(true);
+		}
 		
 		action = talkToGM(0);
 		
@@ -124,8 +132,14 @@ public class DateHandler : MonoBehaviour
 	private void EndGame(TreeNode[] action)
 	{
 		ClearChoices();
-		Application.Quit();
-		UnityEditor.EditorApplication.isPlaying = false;
+		byte rslt = this.action[0].GetId();
+		if(rslt == 36 || rslt == 37 || rslt == 38)
+		{
+			SceneManager.LoadScene("GoodEnd");
+		}else if(rslt == 39 || rslt == 40 || rslt == 41)
+		{
+			SceneManager.LoadScene("BadEnd");
+		}
 	}
 	
 	//Our on-click function
