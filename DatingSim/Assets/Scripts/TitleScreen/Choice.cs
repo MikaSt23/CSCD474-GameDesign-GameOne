@@ -5,6 +5,7 @@ using UnityEngine;
 public static class Choice
 {
 	public static bool isCarrot = false;
+	public static bool isRich = false;
 
 	public static void SetIsCarrot(bool choice)
 	{
