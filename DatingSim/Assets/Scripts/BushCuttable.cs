@@ -53,9 +53,6 @@ public class BushCuttable : ToolHit
             return;
         }
 
-        if (hitPoints > 0)
-            return;
-
         while (dropCount > 0)
         {
             dropCount--;
