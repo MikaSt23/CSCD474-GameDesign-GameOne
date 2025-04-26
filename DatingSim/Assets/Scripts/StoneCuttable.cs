@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BushCuttable : ToolHit
+public class StoneCuttable : ToolHit
 {
     [SerializeField] GameObject pickUpDrop;
-    [SerializeField] int dropCount = 1;
-    [SerializeField] float spread = 0.3f;
-    [SerializeField] int requiredTool = 3; // Tool 3 (e.g., shears)
+    [SerializeField] int dropCount = 2;
+    [SerializeField] float spread = 0.5f;
+    [SerializeField] int requiredTool = 2; // Tool 2 (e.g., pickaxe)
 
     public override void Hit()
     {
@@ -28,4 +28,3 @@ public class BushCuttable : ToolHit
         Destroy(gameObject);
     }
 }
-
