@@ -17,6 +17,21 @@ TextureImporter:
   - first:
       213: 384058854656272681
     second: stone_2
+  - first:
+      213: 3818217323743452925
+    second: fruitTree
+  - first:
+      213: -7523560045513598774
+    second: apple
+  - first:
+      213: -271311362049036883
+    second: berry bush
+  - first:
+      213: -497406288967409369
+    second: berry
+  - first:
+      213: 7915683653226457324
+    second: stump
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -222,7 +237,7 @@ TextureImporter:
         width: 7
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,6 +245,111 @@ TextureImporter:
       bones: []
       spriteID: 92961a45e73745500800000000000000
       internalID: 384058854656272681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fruitTree
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 63
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfe98f81d680df430800000000000000
+      internalID: 3818217323743452925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: apple
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 52
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac817d80002f69790800000000000000
+      internalID: -7523560045513598774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry bush
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 10
+        width: 30
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dad2a81f0cb1c3cf0800000000000000
+      internalID: -271311362049036883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 54
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7216d059d9bd819f0800000000000000
+      internalID: -497406288967409369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stump
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 49
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce8ede0f7582add60800000000000000
+      internalID: 7915683653226457324
       vertices: []
       indices: 
       edges: []

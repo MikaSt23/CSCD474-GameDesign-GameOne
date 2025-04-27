@@ -631,7 +631,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currAmnt: 0
-  Kp_Display: {fileID: 6452800633631946775}
+  quota: 100
+  currAmnt_Display: {fileID: 0}
+  QuotaAmnt_Display: {fileID: 0}
+  FarmUI: {fileID: 0}
 --- !u!1 &6452800632352738370
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.0839233, y: -426.82}
+  m_AnchoredPosition: {x: -4, y: -426.82}
   m_SizeDelta: {x: -1526.3983, y: -979.4881}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6452800632581730077
@@ -1108,7 +1111,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currAmnt: 100
-  Kp_Display: {fileID: 6452800633438915686}
+  quota: 100
+  currAmnt_Display: {fileID: 0}
+  QuotaAmnt_Display: {fileID: 0}
+  FarmUI: {fileID: 0}
 --- !u!1 &6452800633185716590
 GameObject:
   m_ObjectHideFlags: 0
