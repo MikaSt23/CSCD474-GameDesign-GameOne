@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreeCuttable : ToolHit
+public class StoneCuttable : ToolHit
 {
     [SerializeField] GameObject pickUpDrop;
-    [SerializeField] int dropCount = 3;
-    [SerializeField] float spread = 0.7f;
-    [SerializeField] int requiredTool = 1;
+    [SerializeField] int dropCount = 2;
+    [SerializeField] float spread = 0.5f;
+    [SerializeField] int requiredTool = 2;
 
-    private int hitPoints = 5;
+    private int hitPoints = 7;
     private float lastHitTime = 0f;  // Time when the last hit occurred
     private float hitCooldown = 2f;  // Cooldown in seconds
 
@@ -34,7 +34,6 @@ public class TreeCuttable : ToolHit
         transform.position = originalPos;
     }
 
-
     public override void Hit()
     {
         if (Time.time - lastHitTime < hitCooldown)
@@ -54,13 +53,6 @@ public class TreeCuttable : ToolHit
             return;
         }
 
-        if (hitPoints > 0)
-        {
-            // Optional: Add a shake, animation, or sound effect here
-            return;
-        }
-
-        // Tree is destroyed after enough hits
         while (dropCount > 0)
         {
             dropCount--;
@@ -75,4 +67,3 @@ public class TreeCuttable : ToolHit
         Destroy(gameObject);
     }
 }
-
