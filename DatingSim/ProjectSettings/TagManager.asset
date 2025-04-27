@@ -7,7 +7,6 @@ TagManager:
   - FarmUI
   - DateUI
   - Date
-  - Button
   layers:
   - Default
   - TransparentFX

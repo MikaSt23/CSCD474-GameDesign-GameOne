@@ -6,10 +6,8 @@ using System;
 public class UpdateText : MonoBehaviour
 {
     public int currAmnt = 0;
-	public int quota = 100;
-    public Text currAmnt_Display;
-	public Text QuotaAmnt_Display;
-	public GameObject FarmUI;
+    public Text Kp_Display;
+
     public void updateScore (int amnt)
     {
         
@@ -22,21 +20,13 @@ public class UpdateText : MonoBehaviour
         //MyText += MyCount;
         //text.text = MyText;
 		
-		currAmnt += amnt;
-		currAmnt_Display.text = Convert.ToString(currAmnt);
-		FarmUI.SendMessage("UpdateCurrAmnt", currAmnt);
+	currAmnt += amnt;
+	Kp_Display.text = Convert.ToString(currAmnt);
     }
 	
 	void Start()
 	{
-		currAmnt_Display.text = Convert.ToString(currAmnt);
-		QuotaAmnt_Display.text = Convert.ToString(quota);
-		
-		FarmUI.SendMessage("UpdateQuota", quota);
-		FarmUI.SendMessage("UpdateCurrAmnt", currAmnt);
+		Kp_Display.text = Convert.ToString(currAmnt);
 	}
 	
-	void Update()
-	{
-	}
 }
