@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &527518031159575138
+--- !u!1 &382291487610206971
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 527518031159575136}
-  - component: {fileID: 527518031159575139}
-  - component: {fileID: 8237353363806062531}
+  - component: {fileID: 382291487610206951}
+  - component: {fileID: 382291487610206950}
+  - component: {fileID: 382291487610206969}
+  - component: {fileID: 382291487610206968}
   m_Layer: 0
-  m_Name: wool
+  m_Name: BASIC_cow_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &527518031159575136
+--- !u!4 &382291487610206951
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527518031159575138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.285592, y: -0.95462644, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 382291487610206971}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -35.12587, y: -6.0243793, z: 42.41243}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &527518031159575139
+--- !u!212 &382291487610206950
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527518031159575138}
+  m_GameObject: {fileID: 382291487610206971}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,30 +73,56 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: edb1e836b68c64d72b31ce5db07654a4, type: 3}
+  m_Sprite: {fileID: -5525894342619658078, guid: 8ba56df28b75240cfa10248bea746a81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.96875, y: 0.59375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8237353363806062531
+--- !u!61 &382291487610206969
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382291487610206971}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96875, y: 0.59375}
+    newSize: {x: 0.96875, y: 0.59375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.96875, y: 0.59375}
+  m_EdgeRadius: 0
+--- !u!114 &382291487610206968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527518031159575138}
+  m_GameObject: {fileID: 382291487610206971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb0103209a922466ba11f79b4ea2aa33, type: 3}
+  m_Script: {fileID: 11500000, guid: 97b4a7676d73d4a99937d30a6d49bfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  pickupDistance: 1.5
-  item: {fileID: 11400000, guid: 41480b77931584528a6b00d861fe0d38, type: 2}
-  count: 1
+  pickUp: {fileID: 3038938494190300775, guid: b612788e9f2104e63ab86a6b9f4d3322, type: 3}
+  maxDrops: 4
+  spread: 2
+  dropInterval: 240

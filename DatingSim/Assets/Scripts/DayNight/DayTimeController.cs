@@ -26,7 +26,7 @@ public class DayTimeController : MonoBehaviour
     {
         agents = new List<TimeAgent>();
     }
-    
+
     private void Start()
     {
         time = startAtTime;
@@ -67,7 +67,7 @@ public class DayTimeController : MonoBehaviour
             NextDay();
         }
 
-        for(int i = 0; i < agents.Count; i++)
+        for (int i = 0; i < agents.Count; i++)
         {
             agents[i].Invoke();
         }
