@@ -154,14 +154,14 @@ public class Shop : MonoBehaviour
     }
 
     // Draws a wireframe box for the spawn area in the editor (2D)
-    void OnDrawGizmos()
+     /* void OnDrawGizmos()
     {
         // Set the color of the gizmo
         Gizmos.color = Color.green;
 
         // Draw a wireframe box to represent the spawn area in 2D
         Gizmos.DrawWireCube((Vector2)transform.position + spawnOffset, spawnAreaSize);
-    }
+    } */
 
     public float discountPercentage = 0f;  // Discount percentage (e.g., 20% off)
 

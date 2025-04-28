@@ -13,7 +13,7 @@ public class ZoneSpawner : MonoBehaviour
 
     [SerializeField] Vector2 spawnOffset = Vector2.zero; // Add offset to spawn area
 
-    private void OnDrawGizmos()
+    /* private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
 
@@ -36,6 +36,7 @@ public class ZoneSpawner : MonoBehaviour
             Gizmos.DrawSphere(new Vector3(x, y, 0), 0.2f);
         }
     }
+    */
 
     private void Start()
     {
