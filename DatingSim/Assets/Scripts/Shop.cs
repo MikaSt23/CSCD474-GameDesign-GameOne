@@ -108,7 +108,7 @@ public class Shop : MonoBehaviour
         {
             if (quotaTracker.currAmnt >= animalPrice)
             {
-                quotaTracker.updateScore(animalPrice);
+                quotaTracker.updateScore(-animalPrice);  // Subtract points for the purchase
                 animalsBought++;
 
                 SpawnAnimal();
@@ -125,6 +125,7 @@ public class Shop : MonoBehaviour
             }
         }
     }
+
 
     void SpawnAnimal()
     {
