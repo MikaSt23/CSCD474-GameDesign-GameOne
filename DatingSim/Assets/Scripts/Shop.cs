@@ -65,13 +65,32 @@ public class Shop : MonoBehaviour
         }
     }
 
+
+    public void UpdateButtonSprite(Sprite newSprite)
+    {
+        if (buttonImage != null && newSprite != null)
+        {
+            buttonImage.sprite = newSprite;
+            Debug.Log($"Updated button sprite to: {newSprite.name}");
+        }
+        else
+        {
+            Debug.LogWarning("Button image or new sprite is not assigned correctly.");
+        }
+    }
+
+
     void ShowBuyButton()
     {
         if (animalsBought < maxAnimals)
         {
+            ApplyDiscount(); // Apply discount before updating UI
             buyButtonText.text = $"Buy Animal - {animalPrice} Points";
             buyButton.gameObject.SetActive(true);
             buyButton.interactable = true;
+
+            // Update button sprite to match the current shop's animal prefab sprite
+            UpdateButtonSprite(animalPrefab.GetComponent<SpriteRenderer>()?.sprite);
         }
         else
         {
@@ -80,6 +99,8 @@ public class Shop : MonoBehaviour
             buyButton.interactable = false;
         }
     }
+
+
 
     void OnBuyClick()
     {
@@ -140,4 +161,16 @@ public class Shop : MonoBehaviour
         // Draw a wireframe box to represent the spawn area in 2D
         Gizmos.DrawWireCube((Vector2)transform.position + spawnOffset, spawnAreaSize);
     }
+
+    public float discountPercentage = 0f;  // Discount percentage (e.g., 20% off)
+
+    void ApplyDiscount()
+    {
+        if (discountPercentage > 0f)
+        {
+            animalPrice -= Mathf.RoundToInt(animalPrice * discountPercentage / 100);
+            Debug.Log($"Discount applied! New price: {animalPrice}");
+        }
+    }
+
 }
